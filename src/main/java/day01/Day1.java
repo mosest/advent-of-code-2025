@@ -4,65 +4,60 @@ import models.Day;
 import util.ArrayHelper;
 import util.FileHelper;
 
-import java.util.Arrays;
-import java.util.HashMap;
-
-import static java.util.Arrays.sort;
-
 public class Day1 extends Day {
 
-    private final int[][] INPUT;
+    private final String[] INPUT;
+    private final int SPOTS_ON_DIAL = 100;
 
     public Day1(boolean practice) {
-        super(1, 1000, 6, practice);
-        INPUT = FileHelper.readIntoArray_Int_2D_Sideways(INPUT_FILE_NAME, INPUT_NUM_LINES, 2);
+        super(1, 4099, 10, practice);
+        INPUT = FileHelper.readIntoArray_String(INPUT_FILE_NAME, INPUT_NUM_LINES);
     }
 
     public int part1() {
 
-        ArrayHelper.printArray_Int_2D(INPUT);
+        //ArrayHelper.printArray_String(INPUT);
 
-        sort(INPUT[0]); // left  column of numbers
-        sort(INPUT[1]); // right column of numbers
+        // According to instructions, start at position 50 on the dial
+        int position = 50;
+        int count = 0;
 
-        int sum = 0;
-        for (int i = 0; i < INPUT_NUM_LINES; i++) {
-            sum += Math.abs(INPUT[0][i] - INPUT[1][i]);
+        for (String s : INPUT) {
+
+            char direction = s.toCharArray()[0];
+            int clicks = Integer.parseInt(s.substring(1));
+
+            // Turn the dial
+            position = turnDial(position, direction, clicks);
+
+            // In Part 1, count the number of times that the dial points DIRECTLY AT 0.
+            // I suspect that Part 2 will want me to count the number of times the dial CROSSES 0. We will see!
+            if (position == 0) count++;
         }
 
-        return sum;
+        return count;
     }
 
     public int part2() {
-
-        ArrayHelper.printArray_Int_2D(INPUT);
-
-        // Hashmap where key is n:          a number in the right column of the input,
-        // and the value is frequency(n):   the number of times that n shows up in the right column of the input
-        HashMap<Integer, Integer> frequencies = populateFrequencies(INPUT[1]);
-
-        return Arrays.stream(INPUT[0])
-                .map(leftNum ->
-                        leftNum * frequencies.getOrDefault(leftNum, 0)) // similarity score
-                .sum();
+        return -1;
     }
 
-    //region Helpers
+    // Returns the dial's position after the turn
+    public int turnDial(int start, char direction, int clicks) {
 
-    private static HashMap<Integer, Integer> populateFrequencies(int[] searchList) {
+        if (direction == 'L')
+            clicks *= -1;
 
-        HashMap<Integer, Integer> result = new HashMap<>();
+        int end = start + clicks;
 
-        for (int number : searchList) {
-            if (result.containsKey(number)) {
-                result.put(number, result.get(number) + 1);
-            } else {
-                result.put(number, 1);
-            }
-        }
+        if (end < 0)
+            end = SPOTS_ON_DIAL - Math.abs(end);
 
-        return result;
+        if (end >= SPOTS_ON_DIAL)
+            end %= SPOTS_ON_DIAL;
+
+        System.out.println(direction + " " + clicks + ": Started at " + start + ", ended at " + end);
+
+        return end;
     }
-
-    //endregion
 }

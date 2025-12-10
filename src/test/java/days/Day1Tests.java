@@ -15,7 +15,7 @@ public class Day1Tests {
         int actual = new Day1(USING_PRACTICE_INPUT)
                 .part1();
 
-        assertEquals(11, actual);
+        assertEquals(3, actual);
     }
 
     @Test
@@ -23,7 +23,8 @@ public class Day1Tests {
         int actual = new Day1(USING_PUZZLE_INPUT)
                 .part1();
 
-        assertEquals(1320851, actual);
+        // 641 is too low
+        assertEquals(-1, actual);
     }
 
     @Test
@@ -31,7 +32,7 @@ public class Day1Tests {
         int actual = new Day1(USING_PRACTICE_INPUT)
                 .part2();
 
-        assertEquals(31, actual);
+        assertEquals(-1, actual);
     }
 
     @Test
@@ -39,6 +40,6 @@ public class Day1Tests {
         int actual = new Day1(USING_PUZZLE_INPUT)
                 .part2();
 
-        assertEquals(26859182, actual);
+        assertEquals(-1, actual);
     }
 }

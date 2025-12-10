@@ -1,11 +1,13 @@
-# Day 1: TODO TARA
+# Day 1: Turning A Dial
 
-|                | Part One                                        | Part Two             |
-|----------------|-------------------------------------------------|----------------------|
-| **Difficulty** | ⚪⚪⚪⚪⚪                                           | ⚪⚪⚪⚪⚪                |
-| **Fun**        | ⭐⭐⭐⭐⭐                                           | ⚪⚪⚪⚪⚪              |
-|                | 🎵 *coming to terms with it all - PRETTY BLEAK* | 🎵 *wmt - PRETTY BLEAK* |
-|                | I'm late this year, but I'm here!               |                      |
+|                | Part One                                                       | Part Two                                       |
+|----------------|----------------------------------------------------------------|------------------------------------------------|
+| **Difficulty** | ⭐⚪⚪⚪⚪                                                          | ⚪⚪⚪⚪⚪                                          |
+| **Fun**        | ⭐⭐⭐⭐⭐                                                          | ⚪⚪⚪⚪⚪                                          |
+| **Method**     | Modulo operator                                                |                                                |
+| **Trip-Ups**   | The real input had multi-lap rotations, and I missed a modulo. |                                                |
+|                 | 🎵 *coming to terms with it all - PRETTY BLEAK*                | 🎵 *You - Chris Young*                         |
+|                | I'm late this year, but I'm here!                              | Called the Part 2 problem statement in Part 1. |
 
 ### Part One
 

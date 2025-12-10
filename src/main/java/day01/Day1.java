@@ -1,8 +1,9 @@
 package day01;
 
 import models.Day;
-import util.ArrayHelper;
 import util.FileHelper;
+
+import java.util.ArrayList;
 
 public class Day1 extends Day {
 
@@ -38,8 +39,68 @@ public class Day1 extends Day {
         return count;
     }
 
+    // Hey I called the problem statement!
     public int part2() {
-        return -1;
+
+        //ArrayHelper.printArray_String(INPUT);
+
+        // Manipulate the input to consolidate subsequent L and R turns.
+        // We no longer have to keep them separate, since we're not counting actual "land on 0"s but "crossing 0"s.
+
+        ArrayList<String> newInput = consolidateInput();
+
+        System.out.println("NEW INPUT! WOOHOO");
+        for (String s : newInput) System.out.println(s);
+
+        // According to instructions, start at position 50 on the dial
+        int position = 50;
+        int count = 0;
+
+        for (String s : newInput) {
+
+            char direction = s.toCharArray()[0];
+            int clicks = Integer.parseInt(s.substring(1));
+
+            // If the clicks are multiple full rotations, just count the 0s and then pretend it only asked us to turn the partial rotation
+            count += clicks / SPOTS_ON_DIAL;
+
+            if (clicks / SPOTS_ON_DIAL > 0) {
+                System.out.println(direction + " " + Integer.parseInt(s.substring(1)) + ": +" + clicks / SPOTS_ON_DIAL + " because of full rotations. Count is now " + count + "\n");
+            }
+
+            clicks %= SPOTS_ON_DIAL;
+            if (clicks == 0) continue;
+
+            // Turn the dial
+            int newPosition = turnDial(position, direction, clicks);
+
+            // Count times when we bounced off 0
+
+            if (newPosition == 0 && direction == 'L') {
+                count++;
+                System.out.println("+1! Bounce! Count is now " + count);
+            }
+
+            // Count times when we clearly crossed it
+
+            // We were turning left, but we ended up to the right of where we started
+            if (newPosition != 0 && direction == 'L' && newPosition > position) {
+                //System.out.println(direction + " " + Integer.parseInt(s.substring(1)) + " (" + clicks + "): Started at " + position + ", ended at " + newPosition);
+                count++;
+                System.out.println("+1! Count is now " + count + "\n");
+            }
+
+            // We were turning right, but we ended up to the left of where we started
+            else if (newPosition != 0 && direction == 'R' && newPosition < position) {
+                //System.out.println(direction + " " + Integer.parseInt(s.substring(1)) + " (" + clicks + "): Started at " + position + ", ended at " + newPosition);
+                count++;
+                System.out.println("+1! Count is now " + count + "\n");
+            }
+
+            position = newPosition;
+        }
+
+        return count;
     }
 
     // Returns the dial's position after the turn
@@ -51,7 +112,7 @@ public class Day1 extends Day {
         int end = start + clicks;
 
         if (end < 0)
-            end = SPOTS_ON_DIAL - Math.abs(end);
+            end = SPOTS_ON_DIAL - Math.abs(end % SPOTS_ON_DIAL);
 
         if (end >= SPOTS_ON_DIAL)
             end %= SPOTS_ON_DIAL;
@@ -59,5 +120,32 @@ public class Day1 extends Day {
         System.out.println(direction + " " + clicks + ": Started at " + start + ", ended at " + end);
 
         return end;
+    }
+
+    public ArrayList<String> consolidateInput() {
+
+        ArrayList<String> newList = new ArrayList<>();
+
+        char currentDirection = INPUT[0].toCharArray()[0];
+        int currentClicks = Integer.parseInt(INPUT[0].substring(1));
+
+        for (int i = 1; i < INPUT.length; i++) {
+
+            String s = INPUT[i];
+
+            char direction = s.toCharArray()[0];
+            int clicks = Integer.parseInt(s.substring(1));
+
+            if (direction != currentDirection) {
+                newList.add(currentDirection + "" + currentClicks);
+
+                currentDirection = direction;
+                currentClicks = clicks;
+            } else {
+                currentClicks += clicks;
+            }
+        }
+
+        return newList;
     }
 }

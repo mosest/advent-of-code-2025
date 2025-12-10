@@ -4,6 +4,7 @@ import day01.Day1;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class Day1Tests {
 
@@ -23,8 +24,9 @@ public class Day1Tests {
         int actual = new Day1(USING_PUZZLE_INPUT)
                 .part1();
 
-        // 641 is too low
-        assertEquals(-1, actual);
+        assertNotEquals(641, actual, "Too low!");
+        assertNotEquals(642, actual, "Too low!");
+        assertEquals(989, actual);
     }
 
     @Test
@@ -32,7 +34,7 @@ public class Day1Tests {
         int actual = new Day1(USING_PRACTICE_INPUT)
                 .part2();
 
-        assertEquals(-1, actual);
+        assertEquals(6, actual);
     }
 
     @Test
@@ -40,6 +42,8 @@ public class Day1Tests {
         int actual = new Day1(USING_PUZZLE_INPUT)
                 .part2();
 
-        assertEquals(-1, actual);
+        assertNotEquals(5949, actual, "Too high!");
+        assertNotEquals(5922, actual, "Too low!");
+        assertEquals(-2, actual);
     }
 }

@@ -17,8 +17,6 @@ public class Day1 extends Day {
 
     public int part1() {
 
-        //ArrayHelper.printArray_String(INPUT);
-
         // According to instructions, start at position 50 on the dial
         int position = 50;
         int count = 0;
@@ -39,19 +37,13 @@ public class Day1 extends Day {
         return count;
     }
 
-    // Hey I called the problem statement!
+    /*
+     * Manipulate the input to consolidate subsequent L and R turns. e.g. L1, L50, L4, R5 -> L55, R5
+     * We no longer have to keep the turns discrete, since we aren't specifically counting times we land on 0.
+     */
     public int part2() {
 
-        //ArrayHelper.printArray_String(INPUT);
-
-        // Manipulate the input to consolidate subsequent L and R turns.
-        // We no longer have to keep them separate, since we're not counting actual "land on 0"s but "pass 0"s.
-        // This consolidation helps us count passes. Now our big problem is just counting lands
-
         ArrayList<String> newInput = consolidateInput();
-
-        System.out.println("NEW INPUT! WOOHOO");
-        for (String s : newInput) System.out.println(s);
 
         // According to instructions, start at position 50 on the dial
         int position = 50;
@@ -64,11 +56,6 @@ public class Day1 extends Day {
 
             // If the clicks are multiple full rotations, just count the 0s and then pretend it only asked us to turn the partial rotation
             count += clicks / SPOTS_ON_DIAL;
-
-            if (clicks / SPOTS_ON_DIAL > 0) {
-                System.out.println(direction + " " + Integer.parseInt(s.substring(1)) + ": +" + clicks / SPOTS_ON_DIAL + " because of full rotations. Count is now " + count + "\n");
-            }
-
             clicks %= SPOTS_ON_DIAL;
             if (clicks == 0) continue;
 
@@ -76,26 +63,18 @@ public class Day1 extends Day {
             int newPosition = turnDial(position, direction, clicks);
 
             // Count times when we bounced off 0
+            if (newPosition == 0) count++;
 
-            if (newPosition == 0) {
-                count++;
-                System.out.println("+1! Bounce! Count is now " + count);
-            }
-
-            // Count times when we clearly crossed it
+            // Count times when we clearly crossed 0 but didn't land on it
 
             // We were turning left, but we ended up to the right of where we started
-            if (newPosition != 0 && position != 0 && direction == 'L' && newPosition > position) {
-                //System.out.println(direction + " " + Integer.parseInt(s.substring(1)) + " (" + clicks + "): Started at " + position + ", ended at " + newPosition);
+            else if (position != 0 && direction == 'L' && newPosition > position) {
                 count++;
-                System.out.println("+1! Count is now " + count + "\n");
             }
 
             // We were turning right, but we ended up to the left of where we started
-            else if (newPosition != 0 && direction == 'R' && newPosition < position) {
-                //System.out.println(direction + " " + Integer.parseInt(s.substring(1)) + " (" + clicks + "): Started at " + position + ", ended at " + newPosition);
+            else if (position != 0 && direction == 'R' && newPosition < position) {
                 count++;
-                System.out.println("+1! Count is now " + count + "\n");
             }
 
             position = newPosition;

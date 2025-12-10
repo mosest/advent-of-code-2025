@@ -6,24 +6,36 @@ public class Day {
     public final String INPUT_FILE_NAME;
     public final int INPUT_NUM_LINES;
 
-    public Day(String baseFileName, int puzzleInputNumLines, int practiceInputNumLines, boolean practice) {
+    public Day(int dayNumber, int puzzleInputNumLines, int practiceInputNumLines, boolean practice) {
+
+        String twoDigitDayNumber = String.format("%02d", dayNumber);
+
+        String inputFileName = "day" + twoDigitDayNumber + ".txt";
+        String practiceInputFileName = "day" + twoDigitDayNumber + "-practice.txt";
+
         IS_PRACTICE = practice;
         if (practice) {
-            INPUT_FILE_NAME = baseFileName.replaceAll("\\.", "-practice.");
+            INPUT_FILE_NAME = practiceInputFileName;
             INPUT_NUM_LINES = practiceInputNumLines;
         } else {
-            INPUT_FILE_NAME = baseFileName;
+            INPUT_FILE_NAME = inputFileName;
             INPUT_NUM_LINES = puzzleInputNumLines;
         }
     }
 
-    public Day(String baseFileName, boolean practice) {
+    public Day(int dayNumber, boolean practice) {
+
+        String twoDigitDayNumber = String.format("%02d", dayNumber);
+
+        String inputFileName = "day" + twoDigitDayNumber + ".txt";
+        String practiceInputFileName = "day" + twoDigitDayNumber + "-practice.txt";
+
         IS_PRACTICE = practice;
         if (practice) {
-            INPUT_FILE_NAME = baseFileName.replaceAll("\\.", "-practice.");
+            INPUT_FILE_NAME = practiceInputFileName;
             INPUT_NUM_LINES = 0;
         } else {
-            INPUT_FILE_NAME = baseFileName;
+            INPUT_FILE_NAME = inputFileName;
             INPUT_NUM_LINES = 0;
         }
     }

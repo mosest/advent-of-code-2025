@@ -45,7 +45,8 @@ public class Day1 extends Day {
         //ArrayHelper.printArray_String(INPUT);
 
         // Manipulate the input to consolidate subsequent L and R turns.
-        // We no longer have to keep them separate, since we're not counting actual "land on 0"s but "crossing 0"s.
+        // We no longer have to keep them separate, since we're not counting actual "land on 0"s but "pass 0"s.
+        // This consolidation helps us count passes. Now our big problem is just counting lands
 
         ArrayList<String> newInput = consolidateInput();
 
@@ -76,7 +77,7 @@ public class Day1 extends Day {
 
             // Count times when we bounced off 0
 
-            if (newPosition == 0 && direction == 'L') {
+            if (newPosition == 0) {
                 count++;
                 System.out.println("+1! Bounce! Count is now " + count);
             }
@@ -84,7 +85,7 @@ public class Day1 extends Day {
             // Count times when we clearly crossed it
 
             // We were turning left, but we ended up to the right of where we started
-            if (newPosition != 0 && direction == 'L' && newPosition > position) {
+            if (newPosition != 0 && position != 0 && direction == 'L' && newPosition > position) {
                 //System.out.println(direction + " " + Integer.parseInt(s.substring(1)) + " (" + clicks + "): Started at " + position + ", ended at " + newPosition);
                 count++;
                 System.out.println("+1! Count is now " + count + "\n");
@@ -145,6 +146,8 @@ public class Day1 extends Day {
                 currentClicks += clicks;
             }
         }
+
+        newList.add(currentDirection + "" + currentClicks);
 
         return newList;
     }

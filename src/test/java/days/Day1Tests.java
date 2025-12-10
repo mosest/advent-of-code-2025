@@ -44,6 +44,6 @@ public class Day1Tests {
 
         assertNotEquals(5949, actual, "Too high!");
         assertNotEquals(5922, actual, "Too low!");
-        assertEquals(-2, actual);
+        assertEquals(5941, actual);
     }
 }

@@ -1,14 +1,14 @@
 # Day 1: Turning A Dial
 
-|                 | Part One                                                            | Part Two                                                                                         |
-|-----------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| **Difficulty**  | ⭐⭐⚪⚪⚪                                                               | ⭐⭐⚪⚪⚪                                                                                            |
-| **Fun**         | ⭐⭐⭐⭐⭐                                                               | ⭐⭐⭐⚪⚪                                                                                            |
+|                 | Part One                                                             | Part Two                                                                                         |
+|-----------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| **Difficulty**  | ⭐⭐⚪⚪⚪                                                                | ⭐⭐⚪⚪⚪                                                                                            |
+| **Fun**         | ⭐⭐⭐⭐⭐                                                                | ⭐⭐⭐⚪⚪                                                                                            |
 | **Description** | Count the number of times the dial lands on 0 after a complete turn. | Now count the number of times the dial points at or crosses 0 during the turns.                  |
-| **Method**      | 🎄 Modulo                                                   | 🎄 Modulo<br>🎄 Input manipulation                                                               |
-| **Trip-Ups**    | The real input had multi-lap rotations, and I missed a modulo.      | I double-counted the times when we land on 0 and then turn the dial left. Silly!                 |
-|                 | 🎵 *coming to terms with it all - PRETTY BLEAK*                     | 🎵 *You - Chris Young*                                                                           |
-|                 | I'm late this year, but I'm here! Merry Christmas!!                 | Called the Part 2 problem statement in Part 1. <br><br>Wow this took forever. I guess I'm rusty. |
+| **Method**      | 🎄 Modulo                                                            | 🎄 Modulo<br>🎄 Input manipulation                                                               |
+| **Trip-Ups**    | The real input had multi-lap rotations, and I missed a modulo.       | I double-counted the times when we land on 0 and then turn the dial left. Silly!                 |
+|                 | 🎵 *coming to terms with it all - PRETTY BLEAK*                      | 🎵 *You - Chris Young*                                                                           |
+|                 | I'm late this year, but I'm here! Merry Christmas!!                  | Called the Part 2 problem statement in Part 1. <br><br>Wow this took forever. I guess I'm rusty. |
 
 ### Part One
 

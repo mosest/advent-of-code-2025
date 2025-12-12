@@ -1,14 +1,14 @@
 # Day 2: Invalid Product IDs
 
-|                 | Part One                                                                     | Part Two                                                                                                                                         |
-|-----------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Difficulty**  | ⭐⚪⚪⚪⚪ Easy peasy, lemon squeezy                                              | ⭐⚪⚪⚪⚪                                                                                                                                            |
-| **Fun**         | ⭐⭐⭐⭐⚪                                                                        | ⭐⚪⚪⚪⚪                                                                                                                                            |
-| **Description** | Find the numbers made up ONLY of one set of digits, repeated EXACTLY twice.  | Find the numbers made up ONLY of one set of digits, repeated ANY number of times.                                                                |
-| **Method**      | 🎄 Substrings                                                                | 🎄                                                                                                                                               |
-| **Trip-Ups**    |                                                                              |                                                                                                                                                  |
-|                 | 🎵 *Listening to Meg play guitar*                                            | 🎥 *The Best Man Holiday (2013)*                                                                                                                 |
-|                 | Day 1 scared me, so thank goodness Day 2 didn't continue the power-creep.    | Agh, I tried to anticipate the Part 2 problem statement but failed! <br><br>I thought it would be a 2x repeat, but with other digits in the way. |
+|                 | Part One                                                                    | Part Two                                                                                                                                        |
+|-----------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Difficulty**  | ⭐⚪⚪⚪⚪ Easy peasy, lemon squeezy                                             | ⭐⚪⚪⚪⚪                                                                                                                                           |
+| **Fun**         | ⭐⭐⭐⭐⚪ Relieved                                                              | ⭐⭐⭐⭐⚪ I love using Regexes                                                                                                                      |
+| **Description** | Find the numbers made up ONLY of one set of digits, repeated EXACTLY twice. | Find the numbers made up ONLY of one set of digits, repeated ANY number of times.                                                               |
+| **Method**      | 🎄 Substrings                                                               | 🎄 Regex                                                                                                                                        |
+| **Trip-Ups**    |                                                                             |                                                                                                                                                 |
+|                 | 🎵 *Listening to Meg play guitar*                                           | 🎥 *The Best Man Holiday (2013)*                                                                                                                |
+|                 | Day 1 scared me, so thank goodness Day 2 didn't continue the power-creep.   | Aw, I tried to anticipate the Part 2 problem statement but failed. <br><br>I thought it would be a 2x repeat, but with other digits in the way. |
 
 ### Part One
 

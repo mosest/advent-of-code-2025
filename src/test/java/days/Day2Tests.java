@@ -43,7 +43,7 @@ public class Day2Tests {
         BigInteger actual = new Day2(USING_PUZZLE_INPUT)
                 .part2();
 
-        assertEquals(new BigInteger("3"), actual);
+        assertEquals(new BigInteger("31680313976"), actual);
     }
 
     @ParameterizedTest

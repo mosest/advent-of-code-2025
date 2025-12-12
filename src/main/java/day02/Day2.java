@@ -5,6 +5,8 @@ import util.ArrayHelper;
 import util.FileHelper;
 
 import java.math.BigInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Day2 extends Day {
 
@@ -49,7 +51,7 @@ public class Day2 extends Day {
             // Inclusive of both ends
             for (long currentId = range[0]; currentId <= range[1]; currentId++) {
 
-                if (isInvalid_Part1(currentId + "")) {
+                if (isInvalid_Part2(currentId + "")) {
                     sum = sum.add(new BigInteger(currentId + ""));
                 }
             }
@@ -73,6 +75,33 @@ public class Day2 extends Day {
         String firstHalf = str.substring(0, str.length() / 2);
 
         return firstHalf.compareTo(str.substring(str.length() / 2)) == 0;
+    }
+
+    /*
+     * ID which is made only of some sequence of digits, repeated AT LEAST twice
+     */
+    public boolean isInvalid_Part2(String str) {
+
+        // GITHUB COPILOT PLEASE. I AM TRYING TO ENJOY MY PUZZLE BY MYSELF. do not help me. (Ctrl-Alt-Shift-O to toggle completions)
+
+        // Biggest long is like 2_147_000_000 so this loop won't be too inefficient. at worst, O(5n)
+        for (int subsetLength = 1; subsetLength <= str.length() / 2; subsetLength++) {
+
+            if (str.length() % subsetLength != 0) continue;
+
+            String subset = str.substring(0, subsetLength);
+
+            Pattern pattern = Pattern.compile(subset);
+            Matcher matcher = pattern.matcher(str);
+            long matchCount = matcher.results().count();
+
+            int timesThatSubsetShouldMatch = str.length() / subsetLength;
+
+            // If matchCount > times, that means that some matches overlap. e.g. Subset "11" for str "1111"
+            if (matchCount >= timesThatSubsetShouldMatch) return true;
+        }
+
+        return false;
     }
 
     private Long[][] formatInput_Long_2D(String stringToParse) {

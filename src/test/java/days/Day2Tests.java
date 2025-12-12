@@ -35,7 +35,7 @@ public class Day2Tests {
         BigInteger actual = new Day2(USING_PRACTICE_INPUT)
                 .part2();
 
-        assertEquals(new BigInteger("3"), actual);
+        assertEquals(new BigInteger("4174379265"), actual);
     }
 
     @Test
@@ -70,5 +70,36 @@ public class Day2Tests {
         Day2 day2 = new Day2(USING_PRACTICE_INPUT); // input doesn't matter for this test
 
         assertFalse(day2.isInvalid_Part1(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "11",
+            "22",
+            "111",
+            "1188511885",
+            "824824824",
+            "2121212121"})
+    public void isInvalid_Part2_ReturnsTrue(String input) {
+        Day2 day2 = new Day2(USING_PRACTICE_INPUT); // input doesn't matter for this test
+
+        assertTrue(day2.isInvalid_Part2(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+
+            // no repeats
+            "123",
+
+            // repeats, but with unwelcome digits
+            "22122",
+            "12222",
+            "22221",
+            "222211"})
+    public void isInvalid_Part2_ReturnsFalse(String input) {
+        Day2 day2 = new Day2(USING_PRACTICE_INPUT); // input doesn't matter for this test
+
+        assertFalse(day2.isInvalid_Part2(input));
     }
 }

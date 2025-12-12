@@ -4,41 +4,23 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.SequencedCollection;
 
 public class ArrayHelper {
 
-    public static void printArray_Int_2D(int[][] array) {
+    /*
+     * Tara, remember that you can't use primitive types here
+     */
+    public static <T>void printArray(T[] array) {
 
-        for (int[] row : array) {
-            for (int col : row) {
-                System.out.print(col + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public static void printArray_Boolean(boolean[] array) {
-
-        for (int i = 0; i < array.length; i++) {
-            if (array[i]) System.out.println("[" + i + "]: TRUE");
-            else System.out.println("[" + i + "]: FALSE");
-        }
-    }
-
-    public static void printArray_String(String[] array) {
-
-        for (String s : array) {
-            System.out.println(s);
-        }
-    }
-
-    public static void printArray_Int(int[] array) {
-
-        for (int n : array) {
+        for (T n : array) {
             System.out.println(n);
         }
     }
 
+    /*
+     * Tara, remember that you can't use primitive types here
+     */
     public static <T>void printArray_2D(T[][] array) {
 
         for (T[] row : array) {
@@ -59,10 +41,10 @@ public class ArrayHelper {
         }
     }
 
-    public static void printList_String(List<String> strings) {
+    public static <T>void printList(SequencedCollection<T> items) {
 
-        for (String str : strings) {
-            System.out.println(str);
+        for (T item : items) {
+            System.out.println(item);
         }
     }
 

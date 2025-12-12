@@ -2,9 +2,12 @@ package days;
 
 import day02.Day2;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import java.math.BigInteger;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Day2Tests {
 
@@ -13,33 +16,59 @@ public class Day2Tests {
 
     @Test
     public void Day2_Part1_Practice() {
-        int actual = new Day2(USING_PRACTICE_INPUT)
+        BigInteger actual = new Day2(USING_PRACTICE_INPUT)
                 .part1();
 
-        assertEquals(3, actual);
+        assertEquals(new BigInteger("1227775554"), actual);
     }
 
     @Test
     public void Day2_Part1_Puzzle() {
-        int actual = new Day2(USING_PUZZLE_INPUT)
+        BigInteger actual = new Day2(USING_PUZZLE_INPUT)
                 .part1();
 
-        assertEquals(989, actual);
+        assertEquals(new BigInteger("123"), actual);
     }
 
     @Test
     public void Day2_Part2_Practice() {
-        int actual = new Day2(USING_PRACTICE_INPUT)
+        long actual = new Day2(USING_PRACTICE_INPUT)
                 .part2();
 
-        assertEquals(6, actual);
+        assertEquals(-1, actual);
     }
 
     @Test
     public void Day2_Part2_Puzzle() {
-        int actual = new Day2(USING_PUZZLE_INPUT)
+        long actual = new Day2(USING_PUZZLE_INPUT)
                 .part2();
 
-        assertEquals(5941, actual);
+        assertEquals(-1, actual);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "11",           // 1 repeated digit
+            "2323",         // 2 repeated digits
+            "446446",       // 3 repeated digits
+            "38593859",     // 4 repeated digits
+            "1188511885"})  // 5 repeated digits
+    public void isInvalid_Part1_ReturnsTrue(String input) {
+        Day2 day2 = new Day2(USING_PRACTICE_INPUT); // input doesn't matter for this test
+
+        assertTrue(day2.isInvalid_Part1(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "141",
+            "23423",
+            "4461446",
+            "3859385900",
+            "118851188522"})
+    public void isInvalid_Part1_ReturnsFalse(String input) {
+        Day2 day2 = new Day2(USING_PRACTICE_INPUT); // input doesn't matter for this test
+
+        assertFalse(day2.isInvalid_Part1(input));
     }
 }

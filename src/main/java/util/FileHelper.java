@@ -46,7 +46,7 @@ public class FileHelper {
         return result;
     }
 
-    public static int[][] readIntoArray_Int_2D(String fileName, int numLines) {
+    public static int[][] readIntoArray_Int_2D(String fileName, int numLines, String lineSplitter) {
 
         int[][] array = new int[numLines][];
 
@@ -56,7 +56,7 @@ public class FileHelper {
             int r = 0;
 
             while (scanner.hasNextLine()) {
-                String[] line = scanner.nextLine().split(" ");
+                String[] line = scanner.nextLine().split(lineSplitter);
                 array[r] = Arrays.stream(line)
                         .flatMapToInt(str ->
                                 IntStream.of(Integer.parseInt(str)))
@@ -70,7 +70,6 @@ public class FileHelper {
 
         return array;
     }
-
 
     public static int[][] readIntoArray_Int_2D_Sideways(String fileName, int numLines, int numPiecesOnEachLine) {
 

@@ -1,7 +1,9 @@
 package util;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ArrayHelper {
 
@@ -34,6 +36,16 @@ public class ArrayHelper {
 
         for (int n : array) {
             System.out.println(n);
+        }
+    }
+
+    public static <T>void printArray_2D(T[][] array) {
+
+        for (T[] row : array) {
+            for (T col : row) {
+                System.out.print(col + " ");
+            }
+            System.out.println();
         }
     }
 
@@ -112,5 +124,16 @@ public class ArrayHelper {
         }
 
         return diagonalStrings;
+    }
+
+    public static BigInteger findBiggestNumber_BigInteger_2D(BigInteger[][] bigIntegers) {
+        BigInteger biggest = bigIntegers[0][0];
+        for (BigInteger[] row : bigIntegers) {
+            for (BigInteger rowItem : row) {
+                if (rowItem.compareTo(biggest) > 0)
+                    biggest = rowItem;
+            }
+        }
+        return biggest;
     }
 }

@@ -27,23 +27,23 @@ public class Day2Tests {
         BigInteger actual = new Day2(USING_PUZZLE_INPUT)
                 .part1();
 
-        assertEquals(new BigInteger("123"), actual);
+        assertEquals(new BigInteger("26255179562"), actual);
     }
 
     @Test
     public void Day2_Part2_Practice() {
-        long actual = new Day2(USING_PRACTICE_INPUT)
+        BigInteger actual = new Day2(USING_PRACTICE_INPUT)
                 .part2();
 
-        assertEquals(-1, actual);
+        assertEquals(new BigInteger("3"), actual);
     }
 
     @Test
     public void Day2_Part2_Puzzle() {
-        long actual = new Day2(USING_PUZZLE_INPUT)
+        BigInteger actual = new Day2(USING_PUZZLE_INPUT)
                 .part2();
 
-        assertEquals(-1, actual);
+        assertEquals(new BigInteger("3"), actual);
     }
 
     @ParameterizedTest

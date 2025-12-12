@@ -1,18 +1,18 @@
 # Day 2: Invalid Product IDs
 
-|                 | Part One    | Part Two   |
-|-----------------|-------------|------------|
-| **Difficulty**  | ⭐⚪⚪⚪⚪      | ⭐⚪⚪⚪⚪    |
-| **Fun**         | ⭐⚪⚪⚪⚪      | ⭐⚪⚪⚪⚪   |
-| **Description** |             |            |
-| **Method**      | 🎄          | 🎄         |
-| **Trip-Ups**    |             |            |
-|                 | 🎵 *X - Y*  | 🎵 *X - Y* |
-|                 |             |            |
+|                 | Part One                                                                                             | Part Two   |
+|-----------------|------------------------------------------------------------------------------------------------------|------------|
+| **Difficulty**  | ⭐⚪⚪⚪⚪ Easy peasy, lemon squeezy                                                                      | ⭐⚪⚪⚪⚪      |
+| **Fun**         | ⭐⭐⭐⭐⚪                                                                                                | ⭐⚪⚪⚪⚪      |
+| **Description** | Find the numbers made up ONLY of one set of digits, repeated twice. <br><br>No other digits allowed. |            |
+| **Method**      | 🎄 Substrings                                                                                        | 🎄         |
+| **Trip-Ups**    |                                                                                                      |            |
+|                 | 🎵 *Listening to Meg play guitar*                                                                    | 🎵 *X - Y* |
+|                 | Day 1 scared me, so thank goodness Day 2 didn't continue the power-creep                             |            |
 
 ### Part One
 
-You get inside and take the elevator to its only other stop: the gift shop. "Thank you for visiting the North Pole!" gleefully exclaims a nearby sign. You aren't sure who is even allowed to visit the North Pole, but you know you can access the lobby through here, and from there you can access the rest of the North Pole base.
+You get inside and take the elevator to its only other stop: the gift shop. "Thank you for visiting the North Pole!" gleefully exclaims a nearby sign.
 
 As you make your way through the surprisingly extensive selection, one of the clerks recognizes you and asks for your help.
 
@@ -30,7 +30,7 @@ They've even checked most of the product ID ranges already; they only have a few
 
 (The ID ranges are wrapped here for legibility; **in your input, they appear on a single long line.**)
 
-**The ranges are separated by commas (,); each range gives its first ID and last ID separated by a dash (-).**
+**The ranges are separated by commas (`,`); each range gives its first ID and last ID separated by a dash (`-`).**
 
 Since the young Elf was just doing silly patterns, you can find the invalid IDs by looking for **any ID which is made only of some sequence of digits repeated twice.** 
 So, `55` (5 twice), `6464` (64 twice), and `123123` (123 twice) would all be invalid IDs.

@@ -12,13 +12,14 @@ public class Day2 extends Day {
 
     public Day2(boolean practice) {
         super(2, practice);
+
         String inputString = FileHelper.readIntoString(INPUT_FILE_NAME);
         INPUT = formatInput_Long_2D(inputString);
+
+        ArrayHelper.printArray_2D(INPUT);
     }
 
     public BigInteger part1() {
-
-        ArrayHelper.printArray_2D(INPUT);
 
         // First, let me see if I even need to use BigInteger on the input.
         // I hate using BigInteger for math ops unless it's absolutely necessary
@@ -28,10 +29,9 @@ public class Day2 extends Day {
         BigInteger sum = BigInteger.ZERO;
         for (Long[] range : INPUT) {
 
-            // Check each number in the range, inclusive of both ends
+            // Inclusive of both ends
             for (long currentId = range[0]; currentId <= range[1]; currentId++) {
 
-                // Check if each number is invalid
                 if (isInvalid_Part1(currentId + "")) {
                     sum = sum.add(new BigInteger(currentId + ""));
                 }
@@ -41,9 +41,21 @@ public class Day2 extends Day {
         return sum;
     }
 
-    public long part2() {
+    public BigInteger part2() {
 
-        return -1;
+        BigInteger sum = BigInteger.ZERO;
+        for (Long[] range : INPUT) {
+
+            // Inclusive of both ends
+            for (long currentId = range[0]; currentId <= range[1]; currentId++) {
+
+                if (isInvalid_Part1(currentId + "")) {
+                    sum = sum.add(new BigInteger(currentId + ""));
+                }
+            }
+        }
+
+        return sum;
     }
 
     /*
@@ -58,7 +70,6 @@ public class Day2 extends Day {
      */
     public boolean isInvalid_Part1(String str) {
         if (str.length() % 2 != 0) return false;
-
         String firstHalf = str.substring(0, str.length() / 2);
 
         return firstHalf.compareTo(str.substring(str.length() / 2)) == 0;

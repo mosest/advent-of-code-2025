@@ -2,7 +2,7 @@
 
 |                 | Part One                                                                    | Part Two                                                                                                                                        |
 |-----------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Difficulty**  | ⭐⚪⚪⚪⚪ Easy peasy, lemon squeezy                                             | ⭐⚪⚪⚪⚪                                                                                                                                           |
+| **Difficulty**  | ⭐⚪⚪⚪⚪ Easy peasy, lemon squeezy                                             | ⭐⚪⚪⚪⚪ Trivial                                                                                                                                   |
 | **Fun**         | ⭐⭐⭐⭐⚪ Relieved                                                              | ⭐⭐⭐⭐⚪ I love using Regexes                                                                                                                      |
 | **Description** | Find the numbers made up ONLY of one set of digits, repeated EXACTLY twice. | Find the numbers made up ONLY of one set of digits, repeated ANY number of times.                                                               |
 | **Method**      | 🎄 Substrings                                                               | 🎄 Regex                                                                                                                                        |

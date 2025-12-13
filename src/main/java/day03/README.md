@@ -1,14 +1,14 @@
 # Day 3: 
 
-|                 | Part One    | Part Two   |
-|-----------------|-------------|------------|
-| **Difficulty**  | ⭐⚪⚪⚪⚪      | ⭐⚪⚪⚪⚪    |
-| **Fun**         | ⭐⚪⚪⚪⚪      | ⭐⚪⚪⚪⚪   |
-| **Description** |             |            |
-| **Method**      | 🎄          | 🎄         |
-| **Trip-Ups**    |             |            |
-|                 | 🎵 *X - Y*  | 🎵 *X - Y* |
-|                 |             |            |
+|                 | Part One                                                                                                                                         | Part Two   |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| **Difficulty**  | ⭐⭐⚪⚪⚪ Only one trip-up!                                                                                                                          | ⭐⚪⚪⚪⚪    |
+| **Fun**         | ⭐⭐⭐⭐⭐ Recursion came early this year                                                                                                              | ⭐⚪⚪⚪⚪   |
+| **Description** | Given a string of digits, find the biggest number you can make out of 2 digits, in order.                                                        |            |
+| **Method**      | 🎄 Window recursion                                                                                                                      | 🎄         |
+| **Trip-Ups**    | Tried to just find the two biggest numbers at the beginning, then create the number using indices. <br><br>\*Mutombo finger wag\* Not in my house. |            |
+|                 | 🎵 *MUSCLE MEMORY - Kelsea Ballerini*                                                                                                            | 🎵 *X - Y* |
+|                 |                                                                                                                                                  |            |
 
 ### Part One
 

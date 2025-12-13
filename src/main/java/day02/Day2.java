@@ -84,7 +84,6 @@ public class Day2 extends Day {
 
         // GITHUB COPILOT PLEASE. I AM TRYING TO ENJOY MY PUZZLE BY MYSELF. do not help me. (Ctrl-Alt-Shift-O to toggle completions)
 
-        // Biggest long is like 2_147_000_000 so this loop won't be too inefficient. at worst, O(5n)
         for (int subsetLength = 1; subsetLength <= str.length() / 2; subsetLength++) {
 
             if (str.length() % subsetLength != 0) continue;

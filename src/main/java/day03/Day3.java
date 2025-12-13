@@ -4,6 +4,7 @@ import models.Day;
 import util.ArrayHelper;
 import util.FileHelper;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class Day3 extends Day {
@@ -16,21 +17,28 @@ public class Day3 extends Day {
         //ArrayHelper.printArray(INPUT);
     }
 
-    public int part1() {
+    public BigInteger part1() {
 
-        int sum = 0;
+        BigInteger sum = BigInteger.ZERO;
 
         for (String bank : INPUT) {
-            int joltage = getJoltage_Part1(bank, 2);
-            sum += joltage;
+            BigInteger joltage = getJoltage_Part1(bank, 2);
+            sum = sum.add(joltage);
         }
 
         return sum;
     }
 
-    public int part2() {
+    public BigInteger part2() {
 
-        return -1;
+        BigInteger sum = BigInteger.ZERO;
+
+        for (String bank : INPUT) {
+            BigInteger joltage = getJoltage_Part1(bank, 12);
+            sum = sum.add(joltage);
+        }
+
+        return sum;
     }
 
     /*
@@ -41,13 +49,17 @@ public class Day3 extends Day {
      *
      * Okay original plan didn't work. I didn't clock this as a recursion problem upon the first read! SURPRISE RECURSION.
      */
-    public int getJoltage_Part1(String bank, int numDigits) {
+    public BigInteger getJoltage_Part1(String bank, int numDigits) {
 
-        return recurse(0, bank.length() - (numDigits - 1), 0, 0, numDigits, bank);
+        System.out.println();
+        System.out.println(bank + " with " + bank.length() + " digits");
+        System.out.println();
+
+        return recurse(0, bank.length() - (numDigits - 1), 0, BigInteger.ZERO, numDigits, bank);
     }
 
     // It's a walking window function.
-    public int recurse(int startIndex, int endIndexExclusive, int depth, int sum, int unchanging_numDigits, String unchanging_fullString) {
+    public BigInteger recurse(int startIndex, int endIndexExclusive, int depth, BigInteger sum, int unchanging_numDigits, String unchanging_fullString) {
 
         // base case
         if (endIndexExclusive > unchanging_fullString.length()) return sum; // If we have reached the end of the string
@@ -59,19 +71,19 @@ public class Day3 extends Day {
         Arrays.sort(chars);
 
         int aAsciiVal = chars[chars.length - 1];
-        int aIndex = window.indexOf((char)aAsciiVal);
+        int aIndex = unchanging_fullString.indexOf((char)aAsciiVal);
 
         // update the changing variables
         startIndex = aIndex + 1;
         endIndexExclusive++;
 
         // if we need 3 digits and depth is 1, then sum needs to be += a * 100
-        double digitMultiplier = Math.pow(
+        long digitMultiplier = (long) Math.pow(
                 10,
                 unchanging_numDigits - depth - 1);
 
         // ASCII value of character '1' is 49
-        sum += (aAsciiVal - 48) * digitMultiplier;
+        sum = sum.add(BigInteger.valueOf((aAsciiVal - 48) * digitMultiplier));
 
         depth++;
 

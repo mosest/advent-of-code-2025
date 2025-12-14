@@ -61,9 +61,17 @@ public class Day3 extends Day {
     // It's a walking window function.
     public BigInteger recurse(int startIndex, int endIndexExclusive, int depth, BigInteger sum, int unchanging_numDigits, String unchanging_fullString) {
 
-        // base case
+        // base case 1: there aren't enough inputs
         if (endIndexExclusive > unchanging_fullString.length()) return sum; // If we have reached the end of the string
-        if (depth >= unchanging_numDigits) return sum;                      // If we have gotten all the digits we need
+        if (depth >= unchanging_numDigits) return sum;                        // If we have gotten all the digits we need
+
+        // base case 2: the rest of the input is exactly the number of digits we still need
+        String rightHalfOfString = unchanging_fullString.substring(startIndex);
+
+        if ((unchanging_numDigits - depth) == rightHalfOfString.length()) {
+            sum = sum.add(new BigInteger(rightHalfOfString));
+            return sum;
+        }
 
         // recursive case
         String window = unchanging_fullString.substring(startIndex, endIndexExclusive);
@@ -71,7 +79,7 @@ public class Day3 extends Day {
         Arrays.sort(chars);
 
         int aAsciiVal = chars[chars.length - 1];
-        int aIndex = unchanging_fullString.indexOf((char)aAsciiVal);
+        int aIndex = startIndex + window.indexOf((char)aAsciiVal);
 
         // update the changing variables
         startIndex = aIndex + 1;

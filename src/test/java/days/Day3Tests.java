@@ -50,11 +50,13 @@ public class Day3Tests {
 
     @ParameterizedTest
     @MethodSource("bankAndJoltage_2Digits")
-    public void GetJoltage_2Digits(String bank, BigInteger expectedMaxJoltage) {
-        Day3 day3 = new Day3(USING_PRACTICE_INPUT); // input doesn't matter for this test
-        BigInteger actualMaxJoltage = day3.getJoltage_Part1(bank, 2);
+    public void GetJoltage_2Digits(String bank, BigInteger expected) {
 
-        assertEquals(expectedMaxJoltage.longValue(), actualMaxJoltage.longValue());
+        Day3 day3 = new Day3(USING_PRACTICE_INPUT); // input doesn't matter for this test
+
+        BigInteger actual = day3.getJoltage_Part1(bank, 2);
+
+        assertEquals(expected.longValue(), actual.longValue());
     }
 
     static Stream<Arguments> bankAndJoltage_2Digits() {
@@ -69,11 +71,13 @@ public class Day3Tests {
 
     @ParameterizedTest
     @MethodSource("bankAndJoltage_12Digits")
-    public void GetJoltage_12Digits(String bank, BigInteger expectedMaxJoltage) {
-        Day3 day3 = new Day3(USING_PRACTICE_INPUT); // input doesn't matter for this test
-        BigInteger actualMaxJoltage = day3.getJoltage_Part1(bank, 12);
+    public void GetJoltage_12Digits(String bank, BigInteger expected) {
 
-        assertEquals(expectedMaxJoltage.longValue(), actualMaxJoltage.longValue());
+        Day3 day3 = new Day3(USING_PRACTICE_INPUT);
+
+        BigInteger actual = day3.getJoltage_Part1(bank, 12);
+
+        assertEquals(expected.longValue(), actual.longValue());
     }
 
     static Stream<Arguments> bankAndJoltage_12Digits() {

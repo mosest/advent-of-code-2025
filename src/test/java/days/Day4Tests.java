@@ -31,7 +31,7 @@ public class Day4Tests {
         int actual = new Day4(USING_PRACTICE_INPUT)
                 .part2();
 
-        assertEquals(-1, actual);
+        assertEquals(43, actual);
     }
 
     @Test

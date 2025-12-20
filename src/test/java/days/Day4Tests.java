@@ -39,6 +39,6 @@ public class Day4Tests {
         int actual = new Day4(USING_PUZZLE_INPUT)
                 .part2();
 
-        assertEquals(1, actual);
+        assertEquals(8765, actual);
     }
 }

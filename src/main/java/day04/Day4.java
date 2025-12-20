@@ -3,6 +3,8 @@ package day04;
 import models.Day;
 import util.FileHelper;
 
+import java.awt.*;
+
 public class Day4 extends Day {
 
     private final char[][] INPUT;
@@ -36,7 +38,16 @@ public class Day4 extends Day {
 
     public int part2() {
 
-        return -1;
+        int totalRemovedCount = 0;
+        int roundRemovedCount;
+
+        do {
+            roundRemovedCount = updateInput();
+            totalRemovedCount += roundRemovedCount;
+        } while (roundRemovedCount != 0);
+
+        return totalRemovedCount;
+
     }
 
     public boolean isAccessibleByForklift(int rowIndex, int colIndex, char[][] map) {
@@ -63,7 +74,34 @@ public class Day4 extends Day {
             }
         }
 
-        // Done going through our little area.
         return adjacentRollCount <= maxRolls;
+    }
+
+    // Returns the number of rolls of paper that were removed.
+    // This will look very similar to the part1() method!
+    public int updateInput() {
+
+        int count = 0;
+
+        for (int r = 0; r < INPUT.length; r++) {
+            for (int c = 0; c < INPUT[r].length; c++) {
+
+                // If this spot isn't a roll of paper, skip it
+                if (INPUT[r][c] != PAPER) continue;
+
+                // Check roll of paper
+                if (isAccessibleByForklift(r, c, INPUT)) {
+
+                    count++;
+
+                    // At first, I was afraid, I was petrified... thought that I would never live if I updated the array in-place during traversal...
+                    // (No longer singing) We're just going to try it and see what happens. I think it should be fine
+
+                    INPUT[r][c] = '!'; // This can be anything as long as it's not a PAPER char. And I like exclamation marks
+                }
+            }
+        }
+
+        return count;
     }
 }
